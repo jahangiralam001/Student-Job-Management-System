@@ -9,6 +9,7 @@
 </head>
 <body>
     <div id="introLoader" class="introLoading"></div>
+    <div class="container-wrapper">
     <header id="header">
         <nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
             <div class="container">
@@ -36,6 +37,35 @@
             </div>
             <div id="slicknav-mobile"></div>
         </nav>
+
+        <div id="registerModal" class="modal fade login-box-wrapper" tabindex="-1" style="display: none;" data-backdrop="static" data-keyboard="false" data-replace="true">
+			
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title text-center">Create Your Account Today</h4>
+				</div>
+				
+				<div class="modal-body">
+				
+					<div class="row gap-20">
+					
+						<div class="col-sm-6 col-md-6">
+							<a href="register.php?p=Employer" class="btn btn-facebook btn-block mb-5-xs">Sign Up as Company</a>
+						</div>
+						<div class="col-sm-6 col-md-6">
+							<a href="register.php?p=Employee" class="btn btn-facebook btn-block mb-5-xs">Sign Up as Student</a>
+						</div>
+
+					</div>
+				
+				</div>
+				
+				<div class="modal-footer text-center">
+					<button type="button" data-dismiss="modal" class="btn btn-primary btn-inverse">Close</button>
+				</div>
+				
+			</div>
+
     </header>
     <div class="main wrapper">
         <div class="hero" style="background-image:url('images/x.jpg');">
@@ -178,7 +208,7 @@
                                 Start Working</h4>
                                 <p style="font-weight: normal;
                                         padding-bottom:6px;">
-                            12q Keep track of positions that you're interested in by signing up for job alert emails.When your application will be granted start working.You can apply for multiple jobs</p>
+                             Keep track of positions that you're interested in by signing up for job alert emails.When your application will be granted start working.You can apply for multiple jobs</p>
                         </div>
                     </div>
                  </div>
@@ -224,7 +254,19 @@
         </div>
 
     </div>
-    
 
-</body>
+    <!-- --------------------------- Footer ------------------------------- -->
+		
+							
+<?php require 'footer.php'; ?> 
+
+				
+<!-- ---------------------------Footer Close------------------------------- -->
+        </div>
+    </div>
+    <div id="back-to-top">
+    <a href="#"><i class="ion-ios-arrow-up"></i></a>
+    </div>
+
+    </body>
 </html>
