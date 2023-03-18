@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Job Guider</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div id="introLoader" class="introLoading"></div>
+    <header id="header">
+        <nav class="navbar navbar-default navbar-fixed-top navbar-sticky-function">
+            <div class="container">
+                <div class="logo-wrapper">
+                    <div class="logo">
+                        <a href="./"><img src="images/logo.png" alt="Logo"></a>
+                    </div>
+                </div>
+                <div id="navbar" class="navbar-nav-wrapper navbar-arrow">
+                   <ul class="nav navbar-nav" id="responsive-menu">                   
+                        <li>                       
+                            <a href="./">Home</a>                            
+                        </li>                        
+                        <li>
+                            <a href="#">Jobs</a>
+                        </li>                        
+                        <li>
+                            <a href="#">Companies</a>
+                        </li>    
+                        <li>
+                            <a href="#">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="slicknav-mobile"></div>
+        </nav>
+    </header>
+
+    <div class="main wrapper">
+        <div class="hero" style="background-image:url('images/x.jpg');">
+            <div class="container">
+                <h1>Find your next job, fast.</h1>
+                <p>Search by skills. View salaries. One-click apply.</p>
+
+                <div class="main-search-form-wrapper">
+
+                    <form action="">
+                        <div class="form-holder">
+                            <div class="row gap-0">
+                                <div class="col-xss-6 col-xs-6 col-sm-6">
+                                    <select class="form-control" name="category" required>
+                                        <option value="">-Select category-</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="col-xss-6 col-xs-6 col-sm-6">
+                                    <select class="form-control" name="country" id="">
+                                        <option value="">-Select country-</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="btn-holder">
+                            <button name="search" value="✓" type="submit" class="btn"><i class="ion-android-search"></i>Search</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
