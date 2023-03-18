@@ -23,11 +23,12 @@
                                 <div class="col-sm-6 col-md-5 mt-30-xs">
                                     <h5 class="footer-title">Quick Links</h5>
                                     <ul class="footer-menu clearfix">
-                                        <li><a href="index.php">Home</a></li>
-                                        <li><a href="job-list.php">Job List</a></li>
-                                        <li><a href="company_list.php">Companies</a></li>
+                                        <li><a href="##">Home</a></li>
+                                        <li><a href="#">Job List</a></li>
+                                        <li><a href="#">Companies</a></li>
                                         <li><a href="#">Learning</a></li>
-                                        <li><a href="contact.php">Contact Us</a></li>
+                                        
+                                        <li><a href="#">Contact Us</a></li>
                                         <li><a href="#">Go to top</a></li>
 
                                     </ul>
