@@ -4,7 +4,6 @@
 include 'constants/settings.php'; 
 include 'constants/check-login.php';
 ?>
-
 <!-- Header -->
 <?php require 'dry_code/header.php'; ?>
 <!-- Header End -->
