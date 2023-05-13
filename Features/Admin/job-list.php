@@ -28,16 +28,16 @@ $page = 1;
 if (isset($_GET['country']) && ($_GET['category']) ){
 $cate = $_GET['category'];
 $country = $_GET['country'];	
-$query1 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY enc_id DESC LIMIT $page1,12";
-$query2 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY enc_id DESC";
+$query1 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY view_count DESC LIMIT $page1,12";
+$query2 = "SELECT * FROM tbl_jobs WHERE category = :cate AND country = :country ORDER BY view_count DESC";
 $fromsearch = true;
 
 $slc_country = "$country";
 $slc_category = "$cate";
 $title = "$slc_category jobs in $slc_country";
 }else{
-$query1 = "SELECT * FROM tbl_jobs ORDER BY enc_id DESC LIMIT $page1,12";
-$query2 = "SELECT * FROM tbl_jobs ORDER BY enc_id DESC";	
+$query1 = "SELECT * FROM tbl_jobs ORDER BY view_count DESC LIMIT $page1,12";
+$query2 = "SELECT * FROM tbl_jobs ORDER BY view_count DESC";	
 $slc_country = "NULL";
 $slc_category = "NULL";	
 $title = "Job List";
@@ -71,7 +71,7 @@ $title = "Job List";
 							
 								<div class="col-xss-12 col-xs-6 col-sm-6 col-md-5">
 									<div class="form-group form-lg">
-										<select class="form-control" name="category" required>
+										<select class="form-control" name="category" required/>
 										<option value="">-Select category-</option>
 										 <?php
 										 require '../constants/db_config.php';
@@ -297,7 +297,17 @@ $title = "Job List";
 													</div>
 													
 													<div class="col-sm-5 col-md-4">
-														<a target="_blank" href="explore-job.php?jobid=<?php echo $row['job_id']; ?>" class="btn btn-primary">View This Job</a>
+	<a id="view-job-btn-<?php echo $row['job_id']; ?>"
+    
+   href="explore-job.php?jobid=<?php echo $row['job_id']; ?>"
+   class="btn btn-primary view-job-btn"
+   data-job-id="<?php echo $row['job_id']; ?>">
+    View This Job
+    <span class="view-count"><?php echo $row['view_count']; ?></span>
+</a>
+
+
+
 													</div>
 													
 												</div>
@@ -401,6 +411,41 @@ $title = "Job List";
 
 <?php require 'dry_code/jsScript.php'; ?> 
 
+
+
+
+
+<script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const viewJobBtns = document.querySelectorAll('.view-job-btn');
+        viewJobBtns.forEach(function(viewJobBtn) {
+            viewJobBtn.addEventListener('click', function(event) {
+                // event.preventDefault();
+                const jobId = viewJobBtn.dataset.jobId;
+
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'update-view-count.php', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        console.log(xhr.responseText);
+
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.success) {
+                            const viewCountElement = viewJobBtn.querySelector('.view-count');
+                            const currentViewCount = parseInt(viewCountElement.textContent);
+                            viewCountElement.textContent = currentViewCount + 1;
+
+                            // Redirect to explore-job.php
+                            window.location.href = viewJobBtn.getAttribute('href');
+                        }
+                    }
+                };
+                xhr.send('jobId=' + encodeURIComponent(jobId));
+            });
+        });
+    });
+</script>
 </body>
 
 
